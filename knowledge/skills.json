@@ -1,0 +1,177 @@
+[
+  {
+    "category": "Generative AI",
+    "skills": [
+      {
+        "name": "LangChain",
+        "level": "Advanced",
+        "description": "Building multi-agent systems, tool-calling loops, parent document retrievers, and chain orchestration.",
+        "usedIn": ["ResearchMind — Multi-Agent System", "DocuMind AI — RAG Engine", "Interactive Portfolio AI"]
+      },
+      {
+        "name": "RAG Architecture",
+        "level": "Advanced",
+        "description": "Semantic chunking, hybrid BM25 + dense vector search, reciprocal rank fusion, and grounded citations.",
+        "usedIn": ["DocuMind AI — RAG Engine", "Portfolio RAG Assistant"]
+      },
+      {
+        "name": "Vector Databases",
+        "level": "Proficient",
+        "description": "High-dimensional vector indexing, HNSW index management, ChromaDB, and FAISS.",
+        "usedIn": ["DocuMind AI — RAG Engine", "Portfolio Knowledge Search"]
+      },
+      {
+        "name": "Embeddings & Hugging Face",
+        "level": "Advanced",
+        "description": "Open-source embedding models (BAAI/bge-small-en, sentence-transformers) and Hugging Face Hub.",
+        "usedIn": ["DocuMind AI — RAG Engine", "Semantic Project Search"]
+      },
+      {
+        "name": "LLMs & APIs",
+        "level": "Advanced",
+        "description": "Inference orchestration with Groq LPUs, Gemini, OpenAI, and Llama 3 models.",
+        "usedIn": ["ResearchMind — Multi-Agent System", "DocuMind AI — RAG Engine", "Portfolio AI Assistant"]
+      },
+      {
+        "name": "AI Agents",
+        "level": "Advanced",
+        "description": "Multi-agent workflows with specialized personas (Search, Reader, Writer, Critic) and tool binding.",
+        "usedIn": ["ResearchMind — Multi-Agent System"]
+      },
+      {
+        "name": "Prompt Engineering",
+        "level": "Certified",
+        "description": "System role definitions, few-shot conditioning, structured output schemas, and hallucination guardrails.",
+        "usedIn": ["ResearchMind — Multi-Agent System", "DocuMind AI — RAG Engine"]
+      }
+    ]
+  },
+  {
+    "category": "Deep Learning & Computer Vision",
+    "skills": [
+      {
+        "name": "TensorFlow & Keras",
+        "level": "Advanced",
+        "description": "Building custom convolutional networks, transfer learning backbones, custom loss functions, and metrics.",
+        "usedIn": ["Multi Skin Diseases Classifier"]
+      },
+      {
+        "name": "Transfer Learning",
+        "level": "Advanced",
+        "description": "Fine-tuning EfficientNetV2B0 and MobileNetV2 with progressive unfreezing and layer calibration.",
+        "usedIn": ["Multi Skin Diseases Classifier"]
+      },
+      {
+        "name": "OpenCV & Computer Vision",
+        "level": "Proficient",
+        "description": "Image augmentation, morphological filtering, color space conversions, CLAHE, and bounding boxes.",
+        "usedIn": ["Multi Skin Diseases Classifier"]
+      },
+      {
+        "name": "Grad-CAM (Explainable AI)",
+        "level": "Proficient",
+        "description": "Gradient-weighted Class Activation Mapping for inspecting convolutional attention layers in healthcare models.",
+        "usedIn": ["Multi Skin Diseases Classifier"]
+      },
+      {
+        "name": "CNN, RNN, LSTM",
+        "level": "Proficient",
+        "description": "Architecting sequential and spatial deep neural models for vision and sequence prediction tasks.",
+        "usedIn": ["Multi Skin Diseases Classifier", "Academic Research Labs"]
+      },
+      {
+        "name": "NLP (Natural Language Processing)",
+        "level": "Proficient",
+        "description": "Tokenization, text normalization, TF-IDF representations, and transformer feature extraction.",
+        "usedIn": ["ResearchMind — Multi-Agent System", "DocuMind AI"]
+      }
+    ]
+  },
+  {
+    "category": "Data Science & Machine Learning",
+    "skills": [
+      {
+        "name": "Scikit-learn",
+        "level": "Advanced",
+        "description": "Model training, pipeline pipelines, hyperparameter grid search, ensemble methods, and cross-validation.",
+        "usedIn": ["Heart Disease Prediction", "Student Placement Prediction"]
+      },
+      {
+        "name": "Pandas & NumPy",
+        "level": "Advanced",
+        "description": "High-throughput data manipulation, vectorization, array manipulation, and statistical transformations.",
+        "usedIn": ["Heart Disease Prediction", "Student Placement Prediction", "DocuMind AI"]
+      },
+      {
+        "name": "EDA & Feature Engineering",
+        "level": "Advanced",
+        "description": "Handling missing data, IQR outlier mitigation, VIF multicollinearity checks, and polynomial features.",
+        "usedIn": ["Heart Disease Prediction", "Student Placement Prediction"]
+      },
+      {
+        "name": "Data Visualization",
+        "level": "Advanced",
+        "description": "Exploratory plotting with Matplotlib, Seaborn, and interactive charts with Plotly.",
+        "usedIn": ["Heart Disease Prediction", "Deloitte Job Simulation"]
+      },
+      {
+        "name": "Model Evaluation",
+        "level": "Advanced",
+        "description": "Confusion matrices, ROC-AUC curves, Precision-Recall tradeoffs, and F1-score optimization.",
+        "usedIn": ["Multi Skin Diseases Classifier", "Heart Disease Prediction", "Student Placement Prediction"]
+      }
+    ]
+  },
+  {
+    "category": "Programming & Backend",
+    "skills": [
+      {
+        "name": "Python",
+        "level": "Advanced",
+        "description": "Primary development language for all ML pipelines, PyTorch/TensorFlow scripts, and asynchronous FastAPI services.",
+        "usedIn": ["Multi Skin Diseases Classifier", "ResearchMind", "DocuMind AI", "Heart Disease Prediction", "Student Placement Prediction"]
+      },
+      {
+        "name": "SQL",
+        "level": "Proficient",
+        "description": "Relational database querying, joins, aggregations, window functions, and schema design.",
+        "usedIn": ["Student Placement Data Warehouse", "Deloitte Simulation"]
+      },
+      {
+        "name": "FastAPI",
+        "level": "Proficient",
+        "description": "Building high-performance asynchronous REST endpoints, Pydantic schemas, and model serving APIs.",
+        "usedIn": ["Portfolio Backend API", "DocuMind AI Server"]
+      },
+      {
+        "name": "Streamlit",
+        "level": "Advanced",
+        "description": "Rapid development of interactive AI and Data Science web dashboards for clinicians and recruiters.",
+        "usedIn": ["Multi Skin Diseases Classifier", "ResearchMind", "Heart Disease Prediction", "Student Placement Prediction"]
+      }
+    ]
+  },
+  {
+    "category": "Tools & Ecosystem",
+    "skills": [
+      {
+        "name": "Git & GitHub",
+        "level": "Proficient",
+        "description": "Version control, branching strategies, collaborative PR workflows, and repository management.",
+        "usedIn": ["All Projects"]
+      },
+      {
+        "name": "VS Code & Jupyter",
+        "level": "Advanced",
+        "description": "Primary IDE and interactive exploratory notebook environments for experiments.",
+        "usedIn": ["All Projects"]
+      },
+      {
+        "name": "Google Colab",
+        "level": "Advanced",
+        "description": "Cloud GPU (T4, A100) training for deep learning models and large batch inference experiments.",
+        "usedIn": ["Multi Skin Diseases Classifier"]
+      }
+    ]
+  }
+]

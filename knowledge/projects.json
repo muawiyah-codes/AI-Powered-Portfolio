@@ -1,0 +1,322 @@
+[
+  {
+    "id": "multi-skin-diseases-classifier",
+    "title": "Multi Skin Diseases Classifier",
+    "subtitle": "Clinical-Grade Computer Vision with Dual-Gate Guardrails & Explainability",
+    "category": "Deep Learning",
+    "tags": ["Computer Vision", "Deep Learning", "Healthcare AI", "Explainable AI"],
+    "technologies": ["Python", "TensorFlow", "Keras", "EfficientNetV2B0", "MobileNetV2", "OpenCV", "Grad-CAM", "Streamlit"],
+    "featured": true,
+    "metrics": {
+      "accuracy": "90%+",
+      "f1Score": "90%+",
+      "classes": 9,
+      "inferenceLatency": "45ms",
+      "guardrailRejection": "Dual-Gate"
+    },
+    "summary": "Multi-class dermatological diagnostic system classifying 9 clinical skin conditions with 90%+ test accuracy, reinforced with MobileNetV2 Out-of-Domain validation and Grad-CAM visual heatmaps.",
+    "problem": "Dermatological misdiagnosis is common in frontline healthcare due to visual similarity among lesions. Furthermore, typical medical AI models hallucinate when fed non-skin images or ambiguous artifacts.",
+    "solution": "Built a production-ready dual-gate pipeline: First gate uses a fine-tuned MobileNetV2 OOD (Out-of-Domain) classifier to instantly reject non-skin photos. Second gate utilizes an EfficientNetV2B0 model for 9-class classification with predictive entropy thresholding and Grad-CAM saliency heatmaps for clinician validation.",
+    "architectureSteps": [
+      {
+        "step": 1,
+        "name": "Image Input & Preprocessing",
+        "description": "Standardizes raw dermoscopic or clinical photos to 224x224 RGB, applies color calibration and CLAHE contrast enhancement."
+      },
+      {
+        "step": 2,
+        "name": "Dual-Gate Guardrail (MobileNetV2)",
+        "description": "Lightweight binary OOD validator verifies if the image is genuine skin lesion. Rejects random objects, pets, or corrupted captures with an informative error."
+      },
+      {
+        "step": 3,
+        "name": "EfficientNetV2B0 Feature Extractor",
+        "description": "Extracts high-order hierarchical features via progressive learning, fused with bottleneck inverted residual blocks."
+      },
+      {
+        "step": 4,
+        "name": "9-Class Softmax Head",
+        "description": "Predicts probabilities across Melanoma, Basal Cell Carcinoma, Nevus, Actinic Keratosis, Dermatofibroma, Vascular Lesions, Squamous Cell Carcinoma, etc."
+      },
+      {
+        "step": 5,
+        "name": "Uncertainty & Confidence Rejection",
+        "description": "If maximum softmax probability is below 0.65 or entropy exceeds 1.2, flags case as indeterminate for human specialist review."
+      },
+      {
+        "step": 6,
+        "name": "Grad-CAM Visual Heatmap",
+        "description": "Computes gradients of predicted class score with respect to the final convolutional feature maps, overlaying an attention heatmap on original image."
+      },
+      {
+        "step": 7,
+        "name": "Streamlit Interactive Dashboard",
+        "description": "Enables clinicians to drag-and-drop images, review confidence meters, inspect heatmap overlays, and download diagnostic summaries."
+      }
+    ],
+    "challenges": [
+      "Severe class imbalance in rare dermatological conditions.",
+      "Out-of-domain inputs (e.g. users uploading random photos) causing misleading high-confidence predictions in standard ResNet models.",
+      "Black-box nature of deep neural networks causing resistance among medical professionals."
+    ],
+    "solutionsImplemented": [
+      "Weighted cross-entropy loss with Focal Loss variant and Albumentations augmentations (elastic transforms, cutouts).",
+      "Pioneered a pre-inference MobileNetV2 guardrail layer to catch non-dermoscopic images before inference.",
+      "Generated instant Grad-CAM visual explanations highlighting the cellular boundaries that triggered the prediction."
+    ],
+    "github": "https://github.com/muawiyah-codes",
+    "demo": "https://github.com/muawiyah-codes",
+    "stars": 14
+  },
+  {
+    "id": "researchmind-multi-agent",
+    "title": "ResearchMind — Multi-Agent Research System",
+    "subtitle": "Autonomous Web Deep-Research Engine with Orchestrated LLM Agents",
+    "category": "Generative AI",
+    "tags": ["Multi-Agent AI", "LangChain", "Groq LLM", "Autonomous Research", "Tool Calling"],
+    "technologies": ["Python", "LangChain", "Groq", "Tavily API", "Streamlit", "BeautifulSoup", "Llama-3-70B"],
+    "featured": true,
+    "metrics": {
+      "pipelineAgents": 4,
+      "synthesisSpeed": "3.8x faster (Groq LPUs)",
+      "citationAccuracy": "100% Grounded",
+      "exportFormats": "Markdown & PDF"
+    },
+    "summary": "Autonomous AI multi-agent research collective featuring specialized Search, Reader, Writer, and Critic agents to execute deep web research, verify citations, and synthesize publication-ready reports in real-time.",
+    "problem": "Single LLM prompts produce hallucinated facts, outdated information, and superficial overviews when asked to perform deep technical research across multiple academic and web sources.",
+    "solution": "Architected a modular multi-agent workflow using LangChain and Groq. Distinct specialized agent personas operate in an orchestrated loop with real-time web scraping and adversarial fact-checking.",
+    "architectureSteps": [
+      {
+        "step": 1,
+        "name": "User Research Query",
+        "description": "User submits a complex research prompt (e.g., 'Compare state of Mamba SSMs vs Transformers in 2025')."
+      },
+      {
+        "step": 2,
+        "name": "Search Agent (Tavily Query Generator)",
+        "description": "Decomposes the topic into 4-6 targeted sub-queries and queries the Tavily search engine for high-authority URLs."
+      },
+      {
+        "step": 3,
+        "name": "Reader Agent (Scraper & Chunker)",
+        "description": "Extracts raw HTML via BeautifulSoup, scrubs boilerplate/ads, and extracts key claims, tables, and statistics into structured markdown chunks."
+      },
+      {
+        "step": 4,
+        "name": "Writer Agent (Groq LPU Synthesis)",
+        "description": "Drafts comprehensive academic-style literature review with explicit markdown citation footnotes linked to origin URLs."
+      },
+      {
+        "step": 5,
+        "name": "Critic Agent (Adversarial Fact-Check)",
+        "description": "Inspects each claim against retrieved source text. Flags ungrounded claims and loops back to Writer for self-correction before output approval."
+      },
+      {
+        "step": 6,
+        "name": "Streamlit Dashboard & Exporter",
+        "description": "Visualizes live execution state of each agent with streaming token generation, interactive graph, and instant PDF/Markdown export."
+      }
+    ],
+    "challenges": [
+      "LLM context window limitations when ingesting 15+ live web pages.",
+      "Latency bottlenecks when running sequential agent evaluation chains.",
+      "Hallucinated citations or broken reference links."
+    ],
+    "solutionsImplemented": [
+      "Implemented Map-Reduce hierarchical summarization in the Reader Agent before feeding into the Writer context.",
+      "Leveraged ultra-low latency Groq LPUs running Llama-3-70B/8B, cutting total pipeline latency from 65s to under 14s.",
+      "Strict citation validator enforcing URI mapping to every claim in the Critic agent prompt loop."
+    ],
+    "github": "https://github.com/muawiyah-codes",
+    "demo": "https://github.com/muawiyah-codes",
+    "stars": 22
+  },
+  {
+    "id": "documind-ai-rag",
+    "title": "DocuMind AI — Production RAG Engine",
+    "subtitle": "Enterprise Semantic Document Intelligence with Source Attribution",
+    "category": "Generative AI",
+    "tags": ["RAG", "Vector Database", "FastAPI", "Embeddings", "LangChain"],
+    "technologies": ["Python", "FastAPI", "LangChain", "ChromaDB / FAISS", "Hugging Face BGE", "Groq / Gemini", "Streamlit"],
+    "featured": true,
+    "metrics": {
+      "retrievalLatency": "<80ms",
+      "chunkingStrategy": "Recursive Semantic",
+      "vectorDimensions": 384,
+      "guardrail": "Grounded Hallucination Filter"
+    },
+    "summary": "Enterprise-grade Retrieval-Augmented Generation (RAG) system capable of ingesting large technical manuals, research papers, and code repositories with verifiable citation anchors and hallucination guards.",
+    "problem": "Standard LLMs lack company/document-specific knowledge and suffer from catastrophic hallucination when questioned on dense legal, medical, or engineering documentation.",
+    "solution": "Built a modular RAG pipeline using LangChain, Hugging Face BGE embeddings, and ChromaDB vector store. Employs reciprocal rank fusion (RRF), parent document retrieval, and strict citation formatting.",
+    "architectureSteps": [
+      {
+        "step": 1,
+        "name": "Document Ingestion",
+        "description": "Accepts multi-format documents (PDF, Markdown, Docx, TXT) and parses layout structure."
+      },
+      {
+        "step": 2,
+        "name": "Semantic Chunking & Overlap",
+        "description": "Splits content into 500-token chunks with 80-token overlap, preserving semantic coherence and table structures."
+      },
+      {
+        "step": 3,
+        "name": "Embedding Generation (BAAI/bge-small-en)",
+        "description": "Converts text chunks into dense 384-dimensional vector representations optimized for retrieval tasks."
+      },
+      {
+        "step": 4,
+        "name": "Vector Store & Indexing",
+        "description": "Indexes vectors into ChromaDB/FAISS using HNSW indexing for sub-millisecond approximate nearest neighbor search."
+      },
+      {
+        "step": 5,
+        "name": "Hybrid Retriever & Reranking",
+        "description": "Combines dense vector similarity with BM25 lexical keyword search, reranking top candidates."
+      },
+      {
+        "step": 6,
+        "name": "Grounded LLM Generation",
+        "description": "Feeds retrieved context into Groq/Gemini LLM with strict system constraints instructing refusal if context is insufficient."
+      },
+      {
+        "step": 7,
+        "name": "Attributed Citations",
+        "description": "Outputs highlighted answers with exact page numbers, confidence score, and expandable source excerpts."
+      }
+    ],
+    "challenges": [
+      "Loss of cross-paragraph context when splitting dense documents.",
+      "Mismatch between user query wording and terminology used inside technical specs."
+    ],
+    "solutionsImplemented": [
+      "Implemented Parent Document Retriever technique storing small chunks for vector search that map back to larger parent paragraphs for LLM reasoning.",
+      "Query expansion and hypothetical document embedding (HyDE) prompting before vector search."
+    ],
+    "github": "https://github.com/muawiyah-codes",
+    "demo": "https://github.com/muawiyah-codes",
+    "stars": 19
+  },
+  {
+    "id": "heart-disease-prediction",
+    "title": "Heart Disease Predictive Analytics",
+    "subtitle": "Cardiovascular Risk Stratification with Machine Learning & Model Benchmarking",
+    "category": "Machine Learning",
+    "tags": ["Machine Learning", "Healthcare Analytics", "Classification", "Feature Engineering"],
+    "technologies": ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn", "KNN", "Streamlit"],
+    "featured": false,
+    "metrics": {
+      "accuracy": "85.33%",
+      "f1Score": "87.08%",
+      "aucRoc": "0.91",
+      "modelsCompared": 5
+    },
+    "summary": "End-to-end cardiovascular risk prediction system analyzing clinical indicators (cholesterol, ECG, blood pressure, chest pain type). Benchmarked 5 ML algorithms, achieving 85.33% accuracy and 87.08% F1-score with optimized KNN.",
+    "problem": "Early cardiovascular anomaly detection requires correlating non-linear clinical markers that are difficult to identify through standard manual checkups.",
+    "solution": "Designed a full data science pipeline: systematic EDA to identify risk correlations, outlier mitigation using IQR, standard feature scaling, hyperparameter tuning via GridSearchCV across Random Forest, SVM, Logistic Regression, and KNN. Built a real-time Streamlit risk calculator.",
+    "architectureSteps": [
+      {
+        "step": 1,
+        "name": "Clinical Data Ingestion",
+        "description": "Ingests patient clinical indicators including age, resting BP, serum cholesterol, fasting blood sugar, resting ECG, and max heart rate."
+      },
+      {
+        "step": 2,
+        "name": "EDA & Correlation Analysis",
+        "description": "Computed Spearman correlation matrices, pair plots, and detected multivariate outliers using boxplots and IQR filters."
+      },
+      {
+        "step": 3,
+        "name": "Preprocessing & Feature Scaling",
+        "description": "Applied RobustScaler to handle heavy-tailed biometric distributions and one-hot encoded categorical parameters."
+      },
+      {
+        "step": 4,
+        "name": "Multi-Model Benchmarking",
+        "description": "Trained and cross-validated Logistic Regression, Decision Trees, Random Forest, SVM, and K-Nearest Neighbors."
+      },
+      {
+        "step": 5,
+        "name": "Model Optimization & Tuning",
+        "description": "Optimized KNN with k=7, Manhattan distance metric, and distance-weighted voting, attaining 85.33% accuracy and 87.08% F1-score."
+      },
+      {
+        "step": 6,
+        "name": "Interactive Deployment",
+        "description": "Streamlit web interface allowing clinicians to slide risk factors and observe immediate risk percentage and SHAP-inspired explanations."
+      }
+    ],
+    "challenges": [
+      "High covariance between blood pressure, age, and cholesterol.",
+      "Minimizing false negatives (Type II error) which is safety-critical in cardiac screening."
+    ],
+    "solutionsImplemented": [
+      "Tuned classification threshold to favor recall (91.2% sensitivity), reducing false negative risks.",
+      "Used PCA for dimensionality visualization to verify decision boundaries."
+    ],
+    "github": "https://github.com/muawiyah-codes",
+    "demo": "https://github.com/muawiyah-codes",
+    "stars": 11
+  },
+  {
+    "id": "student-placement-prediction",
+    "title": "Student Placement Prediction System",
+    "subtitle": "Predictive Career Analytics & Early Intervention Decision Support",
+    "category": "Machine Learning",
+    "tags": ["Machine Learning", "Predictive Analytics", "Feature Selection", "EdTech"],
+    "technologies": ["Python", "Pandas", "NumPy", "Scikit-learn", "Logistic Regression", "Streamlit"],
+    "featured": false,
+    "metrics": {
+      "accuracy": "80.87%",
+      "f1Score": "80.87%",
+      "algorithm": "Regularized Logistic Regression",
+      "latency": "12ms"
+    },
+    "summary": "Predictive academic data science model evaluating multi-dimensional academic metrics, internship records, and coding proficiencies to forecast placement probabilities with 80.87% accuracy.",
+    "problem": "Higher education institutions often identify at-risk students too late in the final year, resulting in lower campus recruitment conversion rates.",
+    "solution": "Built an interpretable machine learning classification pipeline. Benchmarked ensemble methods against generalized linear models, selecting regularized Logistic Regression for its high generalization and explainable odds ratios. Deployed an interactive Streamlit advisory dashboard.",
+    "architectureSteps": [
+      {
+        "step": 1,
+        "name": "Academic & Skill Data Processing",
+        "description": "Cleans academic records, CGPA, backlogs, technical assessments, internships, and communication test scores."
+      },
+      {
+        "step": 2,
+        "name": "Imputation & Encoding",
+        "description": "Median imputation for missing values, frequency encoding for course specializations, and MinMax scaling."
+      },
+      {
+        "step": 3,
+        "name": "Statistical Feature Selection",
+        "description": "Employed recursive feature elimination (RFE) and Chi-Square tests to extract top predictive coefficients."
+      },
+      {
+        "step": 4,
+        "name": "Model Training & Validation",
+        "description": "Evaluated multiple classifiers with 5-fold cross validation. Logistic Regression achieved superior ROC-AUC and 80.87% test accuracy and F1."
+      },
+      {
+        "step": 5,
+        "name": "Odds-Ratio Explanations",
+        "description": "Calculated odds ratios indicating which specific interventions (e.g., +1 internship or +5% assessment score) boost placement probability the most."
+      },
+      {
+        "step": 6,
+        "name": "Interactive Placement Dashboard",
+        "description": "Streamlit application where career advisors input candidate profile and receive instant placement odds and personalized skill recommendations."
+      }
+    ],
+    "challenges": [
+      "Multicollinearity between high-school marks and university CGPA.",
+      "High variation across different engineering branches."
+    ],
+    "solutionsImplemented": [
+      "Variance Inflation Factor (VIF) filtering to eliminate redundant features.",
+      "L2 (Ridge) penalty regularization to stabilize model coefficients."
+    ],
+    "github": "https://github.com/muawiyah-codes",
+    "demo": "https://github.com/muawiyah-codes",
+    "stars": 9
+  }
+]
